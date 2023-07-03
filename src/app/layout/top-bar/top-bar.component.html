@@ -1,0 +1,17 @@
+<div class="top-nav">
+  <div class="top-nav__links">
+    <a class="top-nav__links__item" routerLink="/">All</a>
+    <a class="top-nav__links__item" routerLink="/men">For Men</a>
+    <a class="top-nav__links__item" routerLink="/women">For Women</a>
+    <a class="top-nav__links__item" routerLink="/electronics">Electronics</a>
+    <a class="top-nav__links__item" routerLink="/jewelery">Jewelery</a>
+  </div>
+  <h1 class="top-nav__header">Angular Shoping Cart</h1>
+  <div class="top-nav__cart">
+    <a [routerLink]="['/cart']">
+      <button type="button" mat-button>
+        <mat-icon>shopping cart</mat-icon>
+      </button>
+    </a>
+  </div>
+</div>
