@@ -1,13 +1,5 @@
 <div class="products-listing-page">
   <div class="products-listing-page__container">
-    <div *ngIf="(cart$ | async) as cartItems">
-      <h2>Cart</h2>
-      <ul>
-        <li *ngFor="let item of cartItems">
-          {{ item.title }}
-        </li>
-      </ul>
-    </div>
     <app-product-card
       *ngFor="let product of products"
       [title]="product.title"

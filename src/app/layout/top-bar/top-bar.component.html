@@ -14,11 +14,13 @@
   </div>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" closed>
-      <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
-      </ul>
+      <app-mini-cart
+        *ngFor="let item of cart$ | async"
+        [title]="item.title"
+        [price]="item.price"
+        [id]="item.id"
+        (removeFromCart)="removeProductFromCart($event)"
+      ></app-mini-cart>
     </mat-sidenav>
   </mat-sidenav-container>
 </div>

@@ -62,6 +62,7 @@ import { ProductDescriptionPageComponent } from './pages/product-description-pag
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     ProductCardComponent,
     TopBarComponent,
     ProductDescriptionPageComponent,
+    MiniCartComponent,
   ],
   imports: [
     StoreModule.forRoot({ cart: cartReducer }),
@@ -80,7 +82,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     RouterLink,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
     RouterLink,
     FormsModule,
