@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './reducers/cart/cart.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material Layout
@@ -52,10 +54,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FooterComponent } from './layout/footer/footer.component';
-import { ProductsListingPageComponent } from './products-listing-page/products-listing-page.component';
+import { ProductsListingPageComponent } from './pages/products-listing-page/products-listing-page.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { NgIf } from '@angular/common';
 import { TopBarComponent } from './layout/top-bar/top-bar.component';
+import { ProductDescriptionPageComponent } from './pages/product-description-page/product-description-page.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -64,8 +70,10 @@ import { TopBarComponent } from './layout/top-bar/top-bar.component';
     ProductsListingPageComponent,
     ProductCardComponent,
     TopBarComponent,
+    ProductDescriptionPageComponent,
   ],
   imports: [
+    StoreModule.forRoot({ cart: cartReducer }),
     MatSidenavModule,
     NgIf,
     MatButtonModule,
@@ -117,6 +125,9 @@ import { TopBarComponent } from './layout/top-bar/top-bar.component';
     MatSortModule,
     MatTableModule,
     HttpClientModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

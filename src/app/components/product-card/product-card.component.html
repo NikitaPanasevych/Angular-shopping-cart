@@ -1,9 +1,14 @@
-<div class="product-card">
+<div class="product-card" (mouseover)="hover=true" (mouseout)="hover=false">
   <div class="product-card__image">
     <img [src]="image" alt="product image" />
   </div>
   <div class="product-card__description">
     <p class="product-card__description__title">{{ title }}</p>
-    <p class="product-card__description__price">{{ price }} $</p>
+    <p class="product-card__description__price">
+      <span>{{ price }} $</span>
+      <button [hidden]="!hover" (click)="add()">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </p>
   </div>
 </div>
