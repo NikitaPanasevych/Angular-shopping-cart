@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class MiniCartComponent {
   @Input() title!: string;
   @Input() price!: number;
+  @Input() quantity!: number;
   @Input() id!: number;
 
   @Output() removeFromCart = new EventEmitter<number>();

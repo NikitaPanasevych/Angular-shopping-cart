@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/products.model';
-import { removeFromCart } from 'src/app/reducers/cart/cart.actions';
+import { map, Observable, take } from 'rxjs';
+import { CartProduct } from 'src/app/models/cart-product.model';
+import {
+  reduceQuantity,
+  removeFromCart,
+} from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
 
 @Component({
@@ -11,7 +14,7 @@ import { CartState } from 'src/app/reducers/cart/cart.state';
   styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
-  cart$!: Observable<Product[]>;
+  cart$!: Observable<CartProduct[]>;
 
   constructor(private store: Store<CartState>) {}
 
@@ -19,7 +22,22 @@ export class TopBarComponent implements OnInit {
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
   }
 
-  removeProductFromCart($event: number) {
-    this.store.dispatch(removeFromCart({ id: $event }));
+  reduceQuantity(id: number) {
+    const cartItem$ = this.cart$.pipe(
+      take(1), // Take only the latest cart items from the observable
+      map((cartItems) => cartItems.find((item) => item.id === id))
+    );
+
+    cartItem$.subscribe((cartItem) => {
+      if (cartItem && cartItem.quantity > 1) {
+        this.store.dispatch(reduceQuantity({ id }));
+      } else {
+        this.store.dispatch(removeFromCart({ id }));
+      }
+    });
+  }
+
+  removeFromCart(id: number) {
+    this.store.dispatch(removeFromCart({ id }));
   }
 }
