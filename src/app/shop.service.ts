@@ -9,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class ShopService {
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`https://fakestoreapi.com/products`);
+  getProducts(category: string): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      `https://fakestoreapi.com/products/${category}`
+    );
   }
 }

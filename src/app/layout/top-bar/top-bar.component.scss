@@ -72,3 +72,20 @@
     }
 }
 
+    .sidenav-container {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+  mat-sidenav {
+    width: 10rem;
+  }
+
+  
+  
+  mat-sidenav-content {
+    padding: 16px;
+  }
+
