@@ -7,6 +7,7 @@ import {
   removeFromCart,
 } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
+import { selectCart } from 'src/app/utils/selectors/cart.selector';
 
 @Component({
   selector: 'app-top-bar',
