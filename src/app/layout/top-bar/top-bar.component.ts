@@ -4,6 +4,7 @@ import { map, Observable, take } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
 import {
   addQuantity,
+  emptyCart,
   reduceQuantity,
   removeFromCart,
 } from 'src/app/reducers/cart/cart.actions';
@@ -49,5 +50,9 @@ export class TopBarComponent implements OnInit {
 
   increaseQuantity(id: number) {
     this.store.dispatch(addQuantity({ id }));
+  }
+
+  clearCart() {
+    this.store.dispatch(emptyCart());
   }
 }

@@ -49,6 +49,7 @@
             mat-raised-button
             color="primary"
             [disabled]="cartLength === 0"
+            (click)="clearCart()"
           >
             Clear cart
           </button>

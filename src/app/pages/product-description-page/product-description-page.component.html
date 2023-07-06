@@ -1,1 +1,21 @@
-<p>product-description-page works!</p>
+<div class="product-description-page">
+  <div class="product-description-page__container">
+    <div class="product-description-page__container__image">
+      <img src="{{ product[0].image }}" alt="product image" />
+    </div>
+    <div class="product-description-page__container__info">
+      <span class="title">{{ product[0].title }}</span>
+      <span class="description">{{ product[0].description }}</span>
+      <span class="category">Category: {{ product[0].category }}</span>
+      <span class="rating">
+        Rating: {{ product[0].rating.rate }}/5
+        <mat-icon> stars </mat-icon>
+      </span>
+      <span class="price">Price: {{ product[0].price }} $</span>
+      <button (click)="addProductToCart(product[0].id)" mat-raised-button>
+        <mat-icon> add_shopping_cart </mat-icon>
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>

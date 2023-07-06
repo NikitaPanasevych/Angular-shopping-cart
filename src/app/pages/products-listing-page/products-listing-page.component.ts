@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
 import { addQuantity, addToCart } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
+import { checkIfItemExistsInCart } from 'src/app/utils/functions/check-if-item-exists-in-cart';
 import { Product } from '../../models/products.model';
 import { ShopService } from '../../shop.service';
 
@@ -49,10 +50,8 @@ export class ProductsListingPageComponent implements OnInit {
     const product: Product[] = this.products.filter(
       (product) => product.id === $event
     );
-    const itemId = $event;
-    const itemExistsInCart = this.checkIfItemExistsInCart(itemId);
-    if (itemExistsInCart) {
-      this.addQuantity(itemId);
+    if (checkIfItemExistsInCart($event, this.cart$)) {
+      this.addQuantity($event);
     } else {
       this.addToCart(product[0]);
     }
@@ -64,16 +63,6 @@ export class ProductsListingPageComponent implements OnInit {
 
   addQuantity(itemId: number) {
     this.store.dispatch(addQuantity({ id: itemId }));
-  }
-
-  checkIfItemExistsInCart(itemId: number): boolean {
-    let itemExists = false;
-    this.cart$.subscribe((cartItems) => {
-      if (cartItems.some((item) => item.id === itemId)) {
-        itemExists = true;
-      }
-    });
-    return itemExists;
   }
 
   filterByNameHandler($event: string) {
@@ -88,7 +77,6 @@ export class ProductsListingPageComponent implements OnInit {
   }
 
   filterByOptionHandler($event: string) {
-    console.log($event);
     if ($event === 'Most expensive') {
       this.products = this.initialProducts.sort((a, b) => b.price - a.price);
     } else if ($event === 'Least expensive') {

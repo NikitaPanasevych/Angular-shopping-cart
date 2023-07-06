@@ -1,14 +1,16 @@
-<div class="product-card" (mouseover)="hover=true" (mouseout)="hover=false">
-  <div class="product-card__image">
-    <img [src]="image" alt="product image" />
-  </div>
-  <div class="product-card__description">
-    <p class="product-card__description__title">{{ title }}</p>
-    <p class="product-card__description__price">
-      <span>{{ price }} $</span>
-      <button [hidden]="!hover" (click)="add()">
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
-    </p>
-  </div>
+<div class="product-card">
+  <a [routerLink]="['/products', title]">
+    <div class="product-card__image">
+      <img [src]="image" alt="product image" />
+    </div>
+    <div class="product-card__description">
+      <p class="product-card__description__title">{{ title }}</p>
+      <p class="product-card__description__price">
+        <span>{{ price }} $</span>
+      </p>
+    </div>
+  </a>
+  <button (click)="add()">
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
 </div>
