@@ -1,0 +1,74 @@
+@import 'src/styles.scss';
+
+.cart-item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $primary-bg;
+    padding: 20px;
+    border-bottom: 1px solid #C2DEDC;
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        .name{
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .price{
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .quantity{
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+    }
+
+    &__image-container{
+        width: 200px;
+        height: 150px;
+        background-color: #C2DEDC;
+        border-radius: 5px;
+        margin-right: 20px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .button-group{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        margin-top: 20px;
+        button{
+            width: 25%;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+                background-color: #C2DEDC;
+                color: $primary-bg;
+            }
+            .icon{
+                margin-left: 10px;
+            }
+        }
+    }
+}

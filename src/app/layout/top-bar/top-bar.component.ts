@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
 import {
+  addQuantity,
   reduceQuantity,
   removeFromCart,
 } from 'src/app/reducers/cart/cart.actions';
@@ -16,11 +17,15 @@ import { selectCart } from 'src/app/utils/selectors/cart.selector';
 })
 export class TopBarComponent implements OnInit {
   cart$!: Observable<CartProduct[]>;
+  cartLength!: number;
 
   constructor(private store: Store<CartState>) {}
 
   ngOnInit(): void {
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
+    this.cart$.subscribe((cart) => {
+      this.cartLength = cart.length;
+    });
   }
 
   reduceQuantity(id: number) {
@@ -40,5 +45,9 @@ export class TopBarComponent implements OnInit {
 
   removeFromCart(id: number) {
     this.store.dispatch(removeFromCart({ id }));
+  }
+
+  increaseQuantity(id: number) {
+    this.store.dispatch(addQuantity({ id }));
   }
 }

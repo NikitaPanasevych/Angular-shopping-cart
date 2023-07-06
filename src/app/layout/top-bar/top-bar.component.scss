@@ -70,22 +70,75 @@
             font-weight: 300;
         }
     }
-}
-
     .sidenav-container {
-        height: 100vh;
+        min-height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
-    }
-
-    mat-sidenav {
+        display: flex;
+        flex-direction: column;
+        
+        mat-sidenav {
         width: 500px;
+        }
+
+        mat-sidenav-content {
+        padding: 16px;
+        }
+
+        h3{
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #C2DEDC;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button{
+                background-color: $primary-bg;
+                cursor: pointer;
+                color: $primary-text;
+            }
+        }
+
+        .footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            padding: 25px;
+            gap: 20px;
+
+            &__total{
+                font-size: 1.2rem;
+                font-weight: 300;
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            &__button-group{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                button{
+                    background-color: $primary-bg;
+                    cursor: pointer;
+                    color: $primary-text;
+                }
+            }
+        }
     }
+}
+
+    
+
+    
 
     
     
-    mat-sidenav-content {
-        padding: 16px;
-    }
+    
 

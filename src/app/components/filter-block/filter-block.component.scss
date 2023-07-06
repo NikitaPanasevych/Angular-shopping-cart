@@ -1,0 +1,14 @@
+.filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    &__search{
+        width: 50%;
+        &__input{
+            width:400px
+        }
+    }
+}

@@ -15,6 +15,10 @@ import { ShopService } from '../../shop.service';
 })
 export class ProductsListingPageComponent implements OnInit {
   cart$!: Observable<CartProduct[]>;
+  initialProducts!: Product[];
+  products: Product[] = [];
+  url = 'category/';
+  category = '';
 
   constructor(
     private shopService: ShopService,
@@ -24,20 +28,18 @@ export class ProductsListingPageComponent implements OnInit {
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
   }
 
-  products: Product[] = [];
-  url = 'category/';
-  category = '';
-
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       if (params['category']) {
         this.category = this.url + params['category'];
         this.shopService.getProducts(this.category).subscribe((products) => {
           this.products = products;
+          this.initialProducts = products;
         });
       } else {
         this.shopService.getProducts(this.category).subscribe((products) => {
           this.products = products;
+          this.initialProducts = products;
         });
       }
     });
@@ -72,5 +74,27 @@ export class ProductsListingPageComponent implements OnInit {
       }
     });
     return itemExists;
+  }
+
+  filterByNameHandler($event: string) {
+    if ($event === '') {
+      this.products = [...this.initialProducts];
+      return;
+    } else {
+      this.products = this.initialProducts.filter((product) =>
+        product.title.toLowerCase().includes($event.toLowerCase())
+      );
+    }
+  }
+
+  filterByOptionHandler($event: string) {
+    console.log($event);
+    if ($event === 'Most expensive') {
+      this.products = this.initialProducts.sort((a, b) => b.price - a.price);
+    } else if ($event === 'Least expensive') {
+      this.products = this.initialProducts.sort((a, b) => a.price - b.price);
+    } else {
+      this.ngOnInit();
+    }
   }
 }

@@ -1,4 +1,9 @@
 <div class="products-listing-page">
+  <app-filter-block
+    (valueChanged)="filterByNameHandler($event)"
+    (optionChanged)="filterByOptionHandler($event)"
+    style="width: 100%"
+  ></app-filter-block>
   <div class="products-listing-page__container">
     <app-product-card
       *ngFor="let product of products"

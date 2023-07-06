@@ -9,19 +9,58 @@
   <h1 class="top-nav__header">Angular Shoping Cart</h1>
   <div class="top-nav__cart">
     <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>shopping_cart</mat-icon>
+      <mat-icon
+        matBadge="{{ cartLength }}"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+        [matBadgeHidden]="cartLength === 0"
+        >shopping_cart</mat-icon
+      >
     </button>
   </div>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" closed>
+      <h3>
+        <span>
+          Your added products:
+          <span *ngIf="cartLength > 0">{{ cartLength }}</span>
+        </span>
+        <span *ngIf="cartLength === 0"> Nothing yet</span>
+        <button mat-raised-button *ngIf="cartLength > 0">See full cart</button>
+      </h3>
       <app-mini-cart
         *ngFor="let item of cart$ | async"
         [title]="item.title"
         [price]="item.price"
         [id]="item.id"
         [quantity]="item.quantity"
-        (removeFromCart)="reduceQuantity($event)"
+        (reduceQuantityInCart)="reduceQuantity($event)"
+        (deleteFromCart)="removeFromCart($event)"
+        (increaseQuantityInCart)="increaseQuantity($event)"
+        [image]="item.image"
       ></app-mini-cart>
+      <div class="footer">
+        <div class="footer__total">
+          <span>Your total:</span>
+          <span>300$</span>
+        </div>
+        <div class="footer__button-group">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="cartLength === 0"
+          >
+            Clear cart
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            [disabled]="cartLength === 0"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
     </mat-sidenav>
   </mat-sidenav-container>
 </div>

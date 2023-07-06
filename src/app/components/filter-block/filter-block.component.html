@@ -1,0 +1,23 @@
+<div class="filter">
+  <div class="filter__search">
+    <mat-form-field class="filter__search__input">
+      <input
+        [(ngModel)]="inputValue"
+        (keyup)="emitValue()"
+        matInput
+        placeholder="Search..."
+      />
+    </mat-form-field>
+  </div>
+  <div class="filter__select">
+    <mat-form-field>
+      <mat-label>Filter By</mat-label>
+      <mat-select [(ngModel)]="selectedOption" (selectionChange)="emitOption()">
+        <mat-option *ngFor="let option of options" [value]="option.name">{{
+          option.name
+        }}</mat-option>
+        <mat-option>None</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

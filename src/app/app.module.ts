@@ -35,9 +35,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -63,6 +63,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
+import { FilterBlockComponent } from './components/filter-block/filter-block.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
     TopBarComponent,
     ProductDescriptionPageComponent,
     MiniCartComponent,
+    FilterBlockComponent,
   ],
   imports: [
     StoreModule.forRoot({ cart: cartReducer }),

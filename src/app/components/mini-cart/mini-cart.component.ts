@@ -10,10 +10,21 @@ export class MiniCartComponent {
   @Input() price!: number;
   @Input() quantity!: number;
   @Input() id!: number;
+  @Input() image!: string;
 
-  @Output() removeFromCart = new EventEmitter<number>();
+  @Output() reduceQuantityInCart = new EventEmitter<number>();
+  @Output() deleteFromCart = new EventEmitter<number>();
+  @Output() increaseQuantityInCart = new EventEmitter<number>();
 
   remove = () => {
-    this.removeFromCart.emit(this.id);
+    this.deleteFromCart.emit(this.id);
+  };
+
+  reduce = () => {
+    this.reduceQuantityInCart.emit(this.id);
+  };
+
+  increase = () => {
+    this.increaseQuantityInCart.emit(this.id);
   };
 }
