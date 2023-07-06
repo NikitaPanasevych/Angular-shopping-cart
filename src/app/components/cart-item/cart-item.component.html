@@ -1,0 +1,23 @@
+<div class="cart-item">
+  <div class="cart-item__info">
+    <p class="title">{{ title }}</p>
+    <p class="description">{{ description }}</p>
+    <p class="price">{{ price }} $</p>
+    <p class="quantity">{{ category }}</p>
+    <p class="total">Total for this product: {{ quantity * price }} $</p>
+  </div>
+  <div class="cart-item__image">
+    <div class="button-group">
+      <button mat-raised-button>
+        <mat-icon class="icon">add</mat-icon>
+      </button>
+      <span>{{ quantity }}</span>
+      <button mat-raised-button>
+        <mat-icon class="icon">remove</mat-icon>
+      </button>
+    </div>
+    <div class="cart-item__image__container">
+      <img src="{{ image }}" alt="" />
+    </div>
+  </div>
+</div>

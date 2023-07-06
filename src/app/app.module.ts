@@ -64,6 +64,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
 import { FilterBlockComponent } from './components/filter-block/filter-block.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { FilterBlockComponent } from './components/filter-block/filter-block.com
     ProductDescriptionPageComponent,
     MiniCartComponent,
     FilterBlockComponent,
+    CartPageComponent,
+    CartItemComponent,
   ],
   imports: [
     StoreModule.forRoot({ cart: cartReducer }),
