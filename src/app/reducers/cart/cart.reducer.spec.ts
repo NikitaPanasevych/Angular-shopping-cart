@@ -159,4 +159,43 @@ describe('cartReducers', () => {
 
     expect(result).toEqual([]);
   });
+
+  it('should remove a product from the cart', () => {
+    const initialCart: CartProduct[] = [
+      {
+        id: 1,
+        title: 'Product 1',
+        price: 10,
+        description: 'Description 1',
+        category: Category.Electronics,
+        image: 'image1.jpg',
+        rating: { rate: 4.5, count: 100 },
+        quantity: 2,
+      },
+      {
+        id: 2,
+        title: 'Product 2',
+        price: 20,
+        description: 'Description 2',
+        category: Category.Jewelery,
+        image: 'image2.jpg',
+        rating: { rate: 3.5, count: 50 },
+        quantity: 1,
+      },
+    ];
+    const action = removeFromCart({ id: 1 });
+    const result = cartReducer(initialCart, action);
+    expect(result).toEqual([
+      {
+        id: 2,
+        title: 'Product 2',
+        price: 20,
+        description: 'Description 2',
+        category: Category.Jewelery,
+        image: 'image2.jpg',
+        rating: { rate: 3.5, count: 50 },
+        quantity: 1,
+      },
+    ]);
+  });
 });
