@@ -20,8 +20,4 @@ export class ProductCardComponent {
   add = () => {
     this.addToCart.emit(this.id);
   };
-
-  navigate = () => {
-    this.router.navigate([this.title]);
-  };
 }

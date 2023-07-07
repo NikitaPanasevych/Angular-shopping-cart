@@ -1,5 +1,5 @@
 <div class="product-card">
-  <a [routerLink]="['/products', title]">
+  <a class="link" [routerLink]="['/products', title]">
     <div class="product-card__image">
       <img [src]="image" alt="product image" />
     </div>
@@ -10,7 +10,7 @@
       </p>
     </div>
   </a>
-  <button (click)="add()">
+  <button class="add-button" (click)="add()">
     <mat-icon>add_shopping_cart</mat-icon>
   </button>
 </div>
