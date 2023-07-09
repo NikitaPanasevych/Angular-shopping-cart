@@ -9,6 +9,8 @@ import {
   removeFromCart,
 } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
+import { calculateTotal } from 'src/app/utils/functions/calculate-total';
+import { calculateTotalQuantity } from 'src/app/utils/functions/calculate-total-quantity';
 
 @Component({
   selector: 'app-top-bar',
@@ -18,6 +20,8 @@ import { CartState } from 'src/app/reducers/cart/cart.state';
 export class TopBarComponent implements OnInit {
   cart$: Observable<CartProduct[]> | undefined;
   cartLength!: number;
+  total = 0;
+  totalQuantity = 0;
 
   constructor(private store: Store<CartState>) {}
 
@@ -25,7 +29,10 @@ export class TopBarComponent implements OnInit {
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
     this.cart$?.subscribe((cart) => {
       this.cartLength = cart.length;
+      this.total = calculateTotal(cart);
+      this.totalQuantity = calculateTotalQuantity(cart);
     });
+    
   }
 
   reduceQuantity(id: number) {

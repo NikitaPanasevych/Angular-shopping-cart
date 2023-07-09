@@ -66,6 +66,7 @@ import { MiniCartComponent } from './components/mini-cart/mini-cart.component';
 import { FilterBlockComponent } from './components/filter-block/filter-block.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { ProductHeadingPipe} from './utils/pipes/product-heading.pipe';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     FilterBlockComponent,
     CartPageComponent,
     CartItemComponent,
+    ProductHeadingPipe,
   ],
   imports: [
     StoreModule.forRoot({ cart: cartReducer }),

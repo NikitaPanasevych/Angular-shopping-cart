@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { checkIfItemExistsInCart } from '.'; // Replace 'your-file-name' with the actual file name
+import { checkIfItemExistsInCart } from '.';
 import { Product, Category, Rating } from 'src/app/models/products.model';
 
 describe('checkIfItemExistsInCart', () => {

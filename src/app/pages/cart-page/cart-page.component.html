@@ -9,11 +9,14 @@
       [quantity]="item.quantity"
       [image]="item.image"
       [category]="item.category"
+      [id]="item.id"
+      (increaseQuantityInCart)="increaseQuantity($event)"
+      (reduceQuantityInCart)="reduceQuantity($event)"
     ></app-cart-item>
   </div>
   <div class="cart__total">
-    <p>Total:</p>
-    <p>quantity:</p>
+    <p>Total: {{ total | currency }}</p>
+    <p>Quantity: {{ totalQuantity }}</p>
     <button mat-raised-button>Checkout</button>
   </div>
 </div>

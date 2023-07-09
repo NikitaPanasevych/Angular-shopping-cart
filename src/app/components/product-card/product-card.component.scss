@@ -32,9 +32,10 @@
         justify-content: flex-start;
         align-items: flex-start;
         &__title{
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 600;
             margin: 10px 0;
+            line-height: normal;
         }
         
         &__price{

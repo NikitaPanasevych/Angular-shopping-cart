@@ -77,9 +77,10 @@
         left: 0;
         display: flex;
         flex-direction: column;
-        
+
         mat-sidenav {
         width: 500px;
+        min-height: 100vh;
         }
 
         mat-sidenav-content {

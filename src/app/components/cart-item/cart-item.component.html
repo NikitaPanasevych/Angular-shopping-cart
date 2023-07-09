@@ -8,11 +8,11 @@
   </div>
   <div class="cart-item__image">
     <div class="button-group">
-      <button mat-raised-button>
-        <mat-icon class="icon">add</mat-icon>
+      <button mat-raised-button (click)="increase()">
+        <mat-icon class="icon" >add</mat-icon>
       </button>
       <span>{{ quantity }}</span>
-      <button mat-raised-button>
+      <button mat-raised-button (click)="reduce()">
         <mat-icon class="icon">remove</mat-icon>
       </button>
     </div>

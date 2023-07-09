@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { ProductCardComponent } from './product-card.component';
 import { By } from '@angular/platform-browser';
+import { ProductHeadingPipe } from 'src/app/utils/pipes/product-heading.pipe';
 
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;
@@ -12,8 +13,8 @@ describe('ProductCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatIconModule], // Include MatIconModule
-      declarations: [ProductCardComponent],
+      imports: [RouterTestingModule, MatIconModule],
+      declarations: [ProductCardComponent, ProductHeadingPipe],
     }).compileComponents();
   });
 
