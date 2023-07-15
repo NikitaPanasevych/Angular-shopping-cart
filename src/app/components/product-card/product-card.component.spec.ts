@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { ProductCardComponent } from './product-card.component';
 import { By } from '@angular/platform-browser';
-import { ProductHeadingPipe } from 'src/app/utils/pipes/product-heading.pipe';
+import { ProductHeadingPipe } from 'src/app/pipes/product-heading.pipe';
 
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;

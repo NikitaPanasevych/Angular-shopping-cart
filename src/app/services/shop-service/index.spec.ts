@@ -3,8 +3,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { ShopService } from './shop.service';
-import { Product } from './models/products.model';
+import { ShopService } from '.';
+import { Product } from '../../models/products.model';
 
 describe('ShopService', () => {
   let service: ShopService;

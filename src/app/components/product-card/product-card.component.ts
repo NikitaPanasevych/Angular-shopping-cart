@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent {
-  hover = false;
 
   @Input() title!: string;
   @Input() price!: number;
@@ -19,13 +18,5 @@ export class ProductCardComponent {
 
   add = () => {
     this.addToCart.emit(this.id);
-  };
-
-  hoverOn = () => {
-    this.hover = true;
-  };
-
-  hoverOff = () => {
-    this.hover = false;
   };
 }

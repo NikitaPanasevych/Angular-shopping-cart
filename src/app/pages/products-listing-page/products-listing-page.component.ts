@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
 import { addQuantity, addToCart } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
+import { SnackbarService } from 'src/app/services/snackbar-service';
 import { checkIfItemExistsInCart } from 'src/app/utils/functions/check-if-item-exists-in-cart';
 import { Product } from '../../models/products.model';
-import { ShopService } from '../../shop.service';
+import { ShopService } from '../../services/shop-service';
 
 @Component({
   selector: 'app-products-listing-page',
@@ -24,7 +25,8 @@ export class ProductsListingPageComponent implements OnInit {
   constructor(
     private shopService: ShopService,
     private readonly route: ActivatedRoute,
-    private store: Store<CartState>
+    private store: Store<CartState>,
+    private snackbarService: SnackbarService
   ) {
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
   }
@@ -52,8 +54,11 @@ export class ProductsListingPageComponent implements OnInit {
     );
     if (checkIfItemExistsInCart($event, this.cart$)) {
       this.addQuantity($event);
+      //snackbar here
+      this.snackbarService.snackbarCall('Item quantity increased');
     } else {
       this.addToCart(product[0]);
+      this.snackbarService.snackbarCall('Item added to cart');
     }
   }
 
@@ -85,4 +90,5 @@ export class ProductsListingPageComponent implements OnInit {
       this.ngOnInit();
     }
   }
+
 }

@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 import { Product } from 'src/app/models/products.model';
 import { addQuantity, addToCart } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
-import { ShopService } from 'src/app/shop.service';
+import { ShopService } from 'src/app/services/shop-service';
+import { SnackbarService } from 'src/app/services/snackbar-service';
 import { checkIfItemExistsInCart } from 'src/app/utils/functions/check-if-item-exists-in-cart';
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductDescriptionPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private shopService: ShopService,
-    private store: Store<CartState>
+    private store: Store<CartState>,
+    private snackbarService: SnackbarService,
   ) {}
 
   cart$ = this.store.select('cart');
@@ -43,9 +45,11 @@ export class ProductDescriptionPageComponent implements OnInit {
   addProductToCart = (id: number) => {
     if (checkIfItemExistsInCart(id, this.cart$)) {
       this.addQuantity(id);
+      this.snackbarService.snackbarCall('Item quantity increased');
       return;
     } else {
       this.addToCart(this.product[0]);
+      this.snackbarService.snackbarCall('Item added to cart');
     }
   };
 
@@ -57,4 +61,5 @@ export class ProductDescriptionPageComponent implements OnInit {
   addQuantity(itemId: number) {
     this.store.dispatch(addQuantity({ id: itemId }));
   }
+
 }
