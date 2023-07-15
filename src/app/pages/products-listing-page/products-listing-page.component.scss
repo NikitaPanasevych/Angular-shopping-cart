@@ -1,3 +1,5 @@
+@import './../../../styles.scss';
+
 .products-listing-page {
     min-height: 100%;
     width: 100%;
@@ -6,6 +8,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: $secondary-bg;
     &__container {
         width: 100%;
         display: flex;
