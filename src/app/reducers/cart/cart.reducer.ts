@@ -22,33 +22,27 @@ export const cartReducer = createReducer(
     localStorage.setItem('cartState', JSON.stringify(newState));
     return newState;
   }),
-  on(addQuantity, (state, { id }) =>
-    state.map((item) => {
+  on(addQuantity, (state, { id }) => {
+    const updatedState = state.map((item) => {
       if (item.id === id) {
-        const updatedItem = { ...item, quantity: item.quantity + 1 };
-        localStorage.setItem(
-          'cartState',
-          JSON.stringify([...state, updatedItem])
-        );
-        return updatedItem;
+        return { ...item, quantity: item.quantity + 1 };
       }
       return item;
-    })
-  ),
-  on(reduceQuantity, (state, { id }) =>
-    state.map((item) => {
-      if (item.id === id) {
-        const updatedItem = { ...item, quantity: item.quantity - 1 };
-        localStorage.setItem(
-          'cartState',
-          JSON.stringify([...state, updatedItem])
-        );
-        return updatedItem;
+    });
+    localStorage.setItem('cartState', JSON.stringify(updatedState));
+    return updatedState;
+  }),
+  on(reduceQuantity, (state, { id }) => {
+    const updatedState = state.map((item) => {
+      if (item.id === id && item.quantity > 0) {
+        return { ...item, quantity: item.quantity - 1 };
       }
       return item;
-    })
-  ),
-  on(emptyCart, (state) => {
+    });
+    localStorage.setItem('cartState', JSON.stringify(updatedState));
+    return updatedState;
+  }),
+  on(emptyCart, () => {
     localStorage.removeItem('cartState');
     return [];
   }),

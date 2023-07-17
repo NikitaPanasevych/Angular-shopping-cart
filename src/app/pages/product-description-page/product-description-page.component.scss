@@ -7,14 +7,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    color: $primary-bg;
+    color: $primary-text;
     &__container {
         width: 100%;
         display: flex;
         gap: 5rem;
         justify-content: center;
-        padding: 0 25px;
+        padding: 7rem 0 0 0;
         &__image{
             width: 500px;
             height: 500px;

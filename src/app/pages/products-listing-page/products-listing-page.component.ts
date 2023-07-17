@@ -90,5 +90,4 @@ export class ProductsListingPageComponent implements OnInit {
       this.ngOnInit();
     }
   }
-
 }

@@ -8,11 +8,11 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: $secondary-bg;
+    background-color: $primary-bg;
     &__container {
         width: 100%;
         display: flex;
-        gap: 5rem;
+        gap: 3rem;
         flex-wrap: wrap;
         justify-content: center;
         padding: 0 25px;
