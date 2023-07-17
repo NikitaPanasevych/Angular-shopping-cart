@@ -6,6 +6,7 @@ import { CartProduct } from 'src/app/models/cart-product.model';
 import { addQuantity, addToCart } from 'src/app/reducers/cart/cart.actions';
 import { CartState } from 'src/app/reducers/cart/cart.state';
 import { SnackbarService } from 'src/app/services/snackbar-service';
+import { fadeIn } from 'src/app/utils/animations/fadeIn';
 import { checkIfItemExistsInCart } from 'src/app/utils/functions/check-if-item-exists-in-cart';
 import { Product } from '../../models/products.model';
 import { ShopService } from '../../services/shop-service';
@@ -14,6 +15,7 @@ import { ShopService } from '../../services/shop-service';
   selector: 'app-products-listing-page',
   templateUrl: './products-listing-page.component.html',
   styleUrls: ['./products-listing-page.component.scss'],
+  animations: [fadeIn],
 })
 export class ProductsListingPageComponent implements OnInit {
   cart$!: Observable<CartProduct[]>;

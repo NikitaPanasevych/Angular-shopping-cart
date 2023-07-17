@@ -1,3 +1,11 @@
+import {
+  animate,
+  sequence,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -19,10 +27,9 @@ export class CartItemComponent {
 
   reduce = () => {
     this.reduceQuantityInCart.emit(this.id);
-  }
+  };
 
   increase = () => {
     this.increaseQuantityInCart.emit(this.id);
-  }
-
+  };
 }

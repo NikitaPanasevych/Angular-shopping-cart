@@ -6,6 +6,7 @@
   ></app-filter-block>
   <div class="products-listing-page__container">
     <app-product-card
+      [@fadeIn]
       *ngFor="let product of products"
       [title]="product.title"
       [price]="product.price"
