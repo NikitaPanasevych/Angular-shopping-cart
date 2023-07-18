@@ -4,6 +4,12 @@ $primary-bg: #fffffe;
 $secondary-bg: #eeee;
 $primary-text: #242629;
 
+//screen breakpoints for media queries
+$laptop: 1445px;
+$tablet: 1000px;
+$small-screen: 730px;
+$mobile: 650px;
+
 *{
     margin: 0;
     padding: 0;

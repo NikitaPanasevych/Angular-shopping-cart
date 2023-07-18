@@ -7,8 +7,8 @@ import {
 } from '@angular/animations';
 
 export const fadeIn = trigger('fadeIn', [
-  state('visible', style({ opacity: 1, transform: 'translatex(0)' })),
-  state('void', style({ opacity: 0, transform: 'translatex(25%)' })),
-  transition('void => *', animate('0.5s ease-out')),
-  transition('* => void', animate('0.5s ease-out ')),
+  state('visible', style({ opacity: 1 })),
+  state('void', style({ opacity: 0 })),
+  transition('void => *', animate('0.2s 350ms ease-in-out')),
+  transition('* => void', animate('0.2s ease-in-out')),
 ]);

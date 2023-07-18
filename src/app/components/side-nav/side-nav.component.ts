@@ -1,9 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
 import {
   addQuantity,
+  emptyCart,
   reduceQuantity,
   removeFromCart,
 } from 'src/app/reducers/cart/cart.actions';
@@ -12,32 +13,25 @@ import { calculateTotal } from 'src/app/utils/functions/calculate-total';
 import { calculateTotalQuantity } from 'src/app/utils/functions/calculate-total-quantity';
 
 @Component({
-  selector: 'app-cart-page',
-  templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss'],
+  selector: 'app-side-nav',
+  templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.scss'],
 })
-export class CartPageComponent implements OnInit {
-  constructor(private store: Store<CartState>) {
-    this.cart$ = this.store.select('cart');
-  }
-
-  cart$!: Observable<CartProduct[]>;
-  cartItems: CartProduct[] = [];
+export class SideNavComponent {
+  cart$: Observable<CartProduct[]> | undefined;
+  cartLength!: number;
   total = 0;
   totalQuantity = 0;
-  screenWidth: any = window.innerWidth;
+
+  constructor(private store: Store<CartState>) {}
 
   ngOnInit(): void {
-    this.cart$.subscribe((cart) => {
-      this.cartItems = cart;
+    this.cart$ = this.store.select('cart'); // Assign the cart$ observable
+    this.cart$?.subscribe((cart) => {
+      this.cartLength = cart.length;
       this.total = calculateTotal(cart);
       this.totalQuantity = calculateTotalQuantity(cart);
     });
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.screenWidth = window.innerWidth;
   }
 
   reduceQuantity(id: number) {
@@ -61,5 +55,9 @@ export class CartPageComponent implements OnInit {
 
   increaseQuantity(id: number) {
     this.store.dispatch(addQuantity({ id }));
+  }
+
+  clearCart() {
+    this.store.dispatch(emptyCart());
   }
 }

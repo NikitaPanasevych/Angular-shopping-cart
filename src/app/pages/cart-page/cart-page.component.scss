@@ -38,19 +38,10 @@
             text-align: left;
             width: 100%;
         }
-        button{
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            background-color: $primary-bg;
-            color: $primary-text;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            &:hover{
-                background-color: $primary-text;
-                color: $primary-bg;
-            }
-
-        }
+        
     }
+    @media  screen and (max-width: 768px) {
+        padding: 0;
+    }
+        
 }

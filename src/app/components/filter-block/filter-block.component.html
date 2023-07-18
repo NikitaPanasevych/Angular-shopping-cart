@@ -1,5 +1,5 @@
 <div class="filter">
-  <div class="filter__search">
+  <div class="filter__search" *ngIf="screenWidth > 1000">
     <mat-form-field class="filter__search__input">
       <input
         [(ngModel)]="inputValue"
@@ -9,7 +9,22 @@
       />
     </mat-form-field>
   </div>
-  <div class="filter__select">
+  <div *ngIf="screenWidth < 1000">
+    <button class="top-nav__menu" mat-icon-button [matMenuTriggerFor]="seacrh">
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-menu #seacrh="matMenu">
+      <input
+        mat-menu-item
+        type="text"
+        [(ngModel)]="inputValue"
+        (keyup)="emitValue()"
+        matInput
+        placeholder="Search..."
+      />
+    </mat-menu>
+  </div>
+  <div *ngIf="screenWidth > 1000" class="filter__select">
     <mat-form-field>
       <mat-label>Filter By</mat-label>
       <mat-select [(ngModel)]="selectedOption" (selectionChange)="emitOption()">
@@ -19,5 +34,18 @@
         <mat-option>None</mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
+  <div class="filter__select" *ngIf="screenWidth < 1000">
+    <button class="top-nav__menu" mat-icon-button [matMenuTriggerFor]="filter">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <mat-menu #filter="matMenu">
+      <mat-select [(ngModel)]="selectedOption" (selectionChange)="emitOption()">
+        <mat-option *ngFor="let option of options" [value]="option.name">{{
+          option.name
+        }}</mat-option>
+        <mat-option>None</mat-option>
+      </mat-select>
+    </mat-menu>
   </div>
 </div>

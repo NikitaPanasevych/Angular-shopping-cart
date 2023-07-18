@@ -67,6 +67,8 @@ import { FilterBlockComponent } from './components/filter-block/filter-block.com
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { ProductHeadingPipe} from './pipes/product-heading.pipe';
+import { MenuComponent } from './components/menu/menu.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { ProductHeadingPipe} from './pipes/product-heading.pipe';
     CartPageComponent,
     CartItemComponent,
     ProductHeadingPipe,
+    MenuComponent,
+    SideNavComponent,
   ],
   imports: [
     StoreModule.forRoot({ cart: cartReducer }),

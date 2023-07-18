@@ -1,0 +1,12 @@
+<div>
+  <button class="top-nav__menu" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">All</button>
+    <button mat-menu-item routerLink="/men's clothing">Men</button>
+    <button mat-menu-item routerLink="/women's clothing">Women</button>
+    <button mat-menu-item routerLink="/electronics">Electronics</button>
+    <button mat-menu-item routerLink="/jewelery">Jewelery</button>
+  </mat-menu>
+</div>

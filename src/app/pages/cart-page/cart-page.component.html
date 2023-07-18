@@ -1,10 +1,9 @@
 <div class="cart">
   <h1>Cart</h1>
-  <div class="cart__container">
+  <div class="cart__container" *ngIf="screenWidth > 1000">
     <app-cart-item
       *ngFor="let item of cart$ | async"
       [title]="item.title"
-      [description]="item.description"
       [price]="item.price"
       [quantity]="item.quantity"
       [image]="item.image"
@@ -12,7 +11,20 @@
       [id]="item.id"
       (increaseQuantityInCart)="increaseQuantity($event)"
       (reduceQuantityInCart)="reduceQuantity($event)"
-    ></app-cart-item>
+    />
+  </div>
+  <div class="cart__container" *ngIf="screenWidth < 1000">
+    <app-mini-cart
+      *ngFor="let item of cart$ | async"
+      [title]="item.title"
+      [price]="item.price"
+      [id]="item.id"
+      [quantity]="item.quantity"
+      (reduceQuantityInCart)="reduceQuantity($event)"
+      (deleteFromCart)="removeFromCart($event)"
+      (increaseQuantityInCart)="increaseQuantity($event)"
+      [image]="item.image"
+    />
   </div>
   <div class="cart__total">
     <p>Total: {{ total | currency }}</p>

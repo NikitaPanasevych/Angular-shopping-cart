@@ -1,12 +1,10 @@
 import {
-  animate,
-  sequence,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-cart-item',
@@ -17,7 +15,6 @@ export class CartItemComponent {
   @Input() title!: string;
   @Input() price!: number;
   @Input() quantity!: number;
-  @Input() description!: string;
   @Input() image!: string;
   @Input() category!: string;
   @Input() id!: number;

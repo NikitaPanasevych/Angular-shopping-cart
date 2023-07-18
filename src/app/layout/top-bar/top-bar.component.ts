@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart-product.model';
@@ -22,17 +22,25 @@ export class TopBarComponent implements OnInit {
   cartLength!: number;
   total = 0;
   totalQuantity = 0;
+  screenWidth: any = window.innerWidth;
+  openedMenu = false;
+  openedSearch = false;
 
   constructor(private store: Store<CartState>) {}
 
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
     this.cart$ = this.store.select('cart'); // Assign the cart$ observable
     this.cart$?.subscribe((cart) => {
       this.cartLength = cart.length;
       this.total = calculateTotal(cart);
       this.totalQuantity = calculateTotalQuantity(cart);
     });
-    
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidth = window.innerWidth;
   }
 
   reduceQuantity(id: number) {

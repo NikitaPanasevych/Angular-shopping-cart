@@ -1,0 +1,49 @@
+@import '../../../styles.scss';
+
+.sidenav-container {
+    h3{
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #000000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button{
+            background-color: $primary-bg;
+            cursor: pointer;
+            color: $primary-text;
+        }
+    }
+
+    .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        padding: 25px;
+        gap: 20px;
+
+        &__total{
+            font-size: 1.2rem;
+            font-weight: 300;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        &__button-group{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button{
+                background-color: $primary-bg;
+                cursor: pointer;
+                color: $primary-text;
+            }
+        }
+    }
+}

@@ -9,13 +9,15 @@
       <span class="category">Category: {{ product[0].category }}</span>
       <span class="rating">
         Rating: {{ product[0].rating.rate }}/5
-        <mat-icon> stars </mat-icon>
+        <mat-icon class="stars"> stars </mat-icon>
       </span>
       <span class="price">Price: {{ product[0].price }} $</span>
-      <button (click)="addProductToCart(product[0].id)" mat-raised-button>
-        <mat-icon> add_shopping_cart </mat-icon>
-        Add to cart
-      </button>
+      <div class="button-div">
+        <button (click)="addProductToCart(product[0].id)" mat-raised-button>
+          <mat-icon> add_shopping_cart </mat-icon>
+          Add to cart
+        </button>
+      </div>
     </div>
   </div>
 </div>
