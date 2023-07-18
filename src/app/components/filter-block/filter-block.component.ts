@@ -1,9 +1,11 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { dropdown } from 'src/app/utils/animations/dropdown';
 
 @Component({
   selector: 'app-filter-block',
   templateUrl: './filter-block.component.html',
   styleUrls: ['./filter-block.component.scss'],
+  animations: [dropdown],
 })
 export class FilterBlockComponent {
   @Output() valueChanged = new EventEmitter<string>();
@@ -12,6 +14,8 @@ export class FilterBlockComponent {
   screenWidth: any = window.innerWidth;
   inputValue!: string;
   selectedOption!: string;
+  showSearch = false;
+  showOptions = false;
 
   emitValue() {
     this.valueChanged.emit(this.inputValue);
