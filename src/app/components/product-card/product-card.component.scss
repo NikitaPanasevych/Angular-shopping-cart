@@ -41,7 +41,7 @@
             line-height: normal;
         }
         
-        &__price{
+        &__bottom{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,9 +68,34 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        &:hover{
-            scale: 1.02;
+    }
+
+    @media screen and (max-width: $mobile) {
+        width: 150px;
+        height: 250px;
+        scale: 0.9;
+
+        &__image{
+            height: 125px;
+            border-radius: 10px;
         }
-        transform: translate(225px, -42px);
+        &__description{
+            &__title{
+                font-size: 0.75rem;
+                
+            }
+            &__bottom{
+                font-size: 0.75rem;
+                padding-bottom: 1rem;
+                &__price{
+                    margin: 0;
+                }
+                button{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        
     }
 }

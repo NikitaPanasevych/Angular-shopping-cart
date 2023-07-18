@@ -22,11 +22,8 @@
         }
         @media screen and (max-width: $tablet){
             grid-template-columns: auto auto;
-            gap: 1rem;
-        }
-        @media screen and (max-width: $mobile){
-            grid-template-columns: auto;
-            gap: 0;
+            gap: 0.25rem;
+            
         }
     }
 }

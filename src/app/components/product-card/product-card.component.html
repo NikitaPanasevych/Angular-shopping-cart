@@ -7,12 +7,14 @@
       <p class="product-card__description__title">
         {{ title | productHeadingPipe }}
       </p>
-      <p class="product-card__description__price">
-        <span>{{ price }} $</span>
-      </p>
+      <div class="product-card__description__bottom">
+        <p class="product-card__description__bottom__price">
+          <span>{{ price }} $</span>
+        </p>
+        <button class="add-button" (click)="add()">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
     </div>
   </a>
-  <button class="add-button" (click)="add()">
-    <mat-icon>add_shopping_cart</mat-icon>
-  </button>
 </div>
