@@ -7,7 +7,7 @@
     border: 1px solid $primary-text;
     background-color: $primary-bg;
     margin: 10px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,7 +73,10 @@
     @media screen and (max-width: $mobile) {
         width: 150px;
         height: 250px;
-        scale: 0.9;
+        &:hover{
+            box-shadow: none;
+            scale: 1;
+        }
 
         &__image{
             height: 125px;
